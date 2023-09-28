@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Parsing through files in current directory
+
+for fname in *; do
+   echo "${fname//[0-9]-/}"
+done
