@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Printing "Best School" 10 times
 
-n=1
-while [ "$n" -le 20 ]
+n=0
+while [ "$n" -lt 20 ]
 do
     case $n in
     4)
@@ -12,6 +12,6 @@ do
     17)
         echo "bad luck from Italy";;
     esac
-    echo $n
+    echo $((n + 1))
     n=$((n + 1))
 done
