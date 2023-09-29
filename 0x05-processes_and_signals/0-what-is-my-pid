@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Prints pid of this scripts instance
+
+echo $$
