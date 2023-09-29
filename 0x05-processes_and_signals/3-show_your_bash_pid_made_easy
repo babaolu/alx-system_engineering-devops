@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # list all processes
 
-ps aufx
+pgrep -l bash
