@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# list all processes
+
+kill "$(pgrep -a bash | grep ./4-to_infinity_and_beyond | cut -f 1 -d " ")"
