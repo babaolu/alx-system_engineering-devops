@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Prints pid of this scripts instance
+
+echo $$ > /var/run/myscript.pid
+trap 'echo "Y U no love me?!"' SIGINT
+trap 'echo "I hate the kill command" ; rm -f /var/run/myscript ; exit' SIGTERM
+trap "rm -f /var/run/myscript.pid; exit" SIGQUIT
+
+i=1
+while [ $i -eq 1 ]
+do
+    echo To infinity and beyond
+    sleep 2
+done
