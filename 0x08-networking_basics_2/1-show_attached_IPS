@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Displaying active IPs
+ifconfig | grep "inet " | cut -d" " -f10
