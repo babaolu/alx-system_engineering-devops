@@ -1,6 +1,9 @@
 # Appending to config file using puppet
 $file_content = file('/etc/ssh/ssh_config', 'content')
-$new_content = "${file_content}\n\nHost ubuntu@52.5.101.209
+$new_content = "${file_content}\n
+PasswordAuthentication no
+\n
+Host ubuntu@52.5.101.209
     HostName 52.5.101.209
     User ubuntu
     IdentityFile ~/.ssh/school"
