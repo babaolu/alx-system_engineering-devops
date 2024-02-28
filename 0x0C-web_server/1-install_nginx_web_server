@@ -33,7 +33,7 @@ run_at_port=$(sudo lsof -i :80 | \
 sed -n '2{s/^[[:space:]]*\([^[:space:]]*\).*/\1/p}')
 if [ -n "$run_at_port" ]
 then
-	sudo service "$run_at_port" stop
+	sudo pkill "$run_at_port"
 fi
 sudo nginx
 exit
