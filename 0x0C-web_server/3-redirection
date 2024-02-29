@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Configure redirection for server
+
+echo -e "
+server {\
+	listen 80;\
+	server_name localhost;\
+	\
+	location /redirect_me {\
+		return 301 https://www.youtube.com/watch?v=QH2-TGU1wu4;
+	}
+}" > /etc/nginx/sites-available/redirect
+ln -sf /etc/nginx/sites-available/redirect /etc/nginx/sites-enabled/redirect
+
+run_at_port=$(lsof -i :80 | \
+sed -n '2{s/^[[:space:]]*\([^[:space:]]*\).*/\1/p}')
+if [ -n "$run_at_port" ]
+then
+	pkill "$run_at_port"
+fi
+nginx
+exit
