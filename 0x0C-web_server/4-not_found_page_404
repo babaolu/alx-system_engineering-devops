@@ -2,11 +2,10 @@
 # Installs nginx web server and configures it
 
 mkdir -p /etc/nginx/sites-enabled/
-add_val="error_page 404 /404.html;\n\
-	location = /404.html {\n\
+add_val="error_page 404 /404-def.html;\n\
+	location = /404-def.html {\n\
 		root /var/www/html;\n\
 		internal;\n\
-		index 404-def.html;\n\
 	}"
 echo -e "server {\n\
 	listen 80 default_server;\n\
