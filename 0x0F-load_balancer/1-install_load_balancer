@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Install HAProxy
 apt-get install -y --no-install-recommends software-properties-common
-add-apt-repository ppa:vbernat/haproxy-2.8
+add-apt-repository -y ppa:vbernat/haproxy-2.8
 apt-get -y install haproxy=2.8.\*
 sudo tee /etc/haproxy/haproxy.cfg >/dev/null <<EOL
 global
