@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Install HAProxy
 apt-get install -y --no-install-recommends software-properties-common
-add-apt-repository ppa:vbernat/haproxy-2.0
-apt-get -y install haproxy=2.0.\*
+add-apt-repository ppa:vbernat/haproxy-2.8
+apt-get -y install haproxy=2.8.\*
 sudo tee /etc/haproxy/haproxy.cfg >/dev/null <<EOL
 global
     log /dev/log    local0
@@ -29,8 +29,8 @@ frontend http-in
 
 backend servers
     balance roundrobin
-    server server1 54.237.61.71:80 check
-    server server2 54.146.64.127:80 check
+    server server1 52.5.101.209:80 check
+    server server2 100.25.211.77:80 check
 EOL
 
 sudo systemctl enable haproxy
