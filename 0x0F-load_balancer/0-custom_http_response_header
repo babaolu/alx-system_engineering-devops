@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+# Installs nginx web server and configures it
+
+apt-get -y update
+apt-get -y install nginx
+
+ufw allow 'Nginx HTTP'
+
+serv_name=$(hostname)
+mkdir -p /etc/nginx/sites-enabled/
+red_val="location /redirect_me {\n\
+		return 301 https://www.youtube.com/watch?v=QH2-TGU1wu4;\n\
+	}"
+
+add_val="error_page 404 /404-def.html;\n\
+	location = /404-def.html {\n\
+		root /var/www/html;\n\
+		internal;\n\
+	}"
+
+echo -e "server {\n\
+	listen 80 default_server;\n\
+	listen [::]:80 default_server;\n\
+	root /var/www/html;\n\
+	index index.html index.htm index.nginx-debian.html;\n\
+	server_name _;\n\
+	location / {\n\
+		try_files \$uri \$uri/ =404;\n\
+	}\n\
+	$red_val \n
+	$add_val \n
+
+	add_header X-Served-By $serv_name;
+}" > /etc/nginx/sites-enabled/default
+
+mkdir -p /var/www/html/
+echo -e "Hello World!" > /var/www/html/index.html
+echo -e "Ceci n'est pas une page\n" > /var/www/html/404-def.html
+
+run_at_port=$(lsof -i :80 | \
+sed -n '2{s/^[[:space:]]*\([^[:space:]]*\).*/\1/p}')
+if [ -n "$run_at_port" ]
+then
+	pkill "$run_at_port"
+fi
+nginx
+exit
