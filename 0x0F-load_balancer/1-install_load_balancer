@@ -29,8 +29,8 @@ frontend http-in
 
 backend servers
     balance roundrobin
-    server server1 52.5.101.209:80 check
-    server server2 100.25.211.77:80 check
+    server web-01 35.153.255.139:80 check
+    server web-02 100.25.211.77:80 check
 EOL
 
 sudo systemctl enable haproxy
