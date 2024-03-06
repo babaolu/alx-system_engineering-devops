@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Runs apache container app
+sudo docker run -p 8080:80 -d -it holbertonschool/265-0
+hval=$(sudo docker ps --format "{{.ID}}")
+sudo docker exec -i "$hval" bash -c "sudo a2ensite 000-default && \
+sudo service apache2 start" > /dev/null 2>&1
