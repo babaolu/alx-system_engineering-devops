@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Nginx container must listen to port 80
+run_at_port=$(lsof -i :80|sed -n '2{s/^[[:space:]]*\([^[:space:]]*\).*/\1/p}')
+sudo service "$run_at_port" stop > /dev/null 2>&1
+sudo service nginx restart
