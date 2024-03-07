@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Nginx container must listen to port 80
+
+docker pull nginx
+
+run_at_port=$(lsof -i :80 | \
+sed -n '2{s/^[[:space:]]*\([^[:space:]]*\).*/\1/p}')
+if [ -n "$run_at_port" ]
+then
+	service "$run_at_port" stop
+fi
+
+docker run -p 80:80 -d -it nginx
