@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# Show IP addresses attached to certain domains
+
+if [ "$#" -lt 1 ]
+then
+	exit
+fi
+
+dig_print () {
+	d_ip=$(dig "$2"."$1" | grep "$2"."$1" | \
+	grep -oE '\b[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+\b')
+	echo "The subdomain $2 is a A record and points to $d_ip"
+}
+
+if [ "$#" -ge 2 ]
+then
+	echo "$#"
+	dig_print "$1" "$2"
+	exit
+fi
+
+dig_print "$1" "www"
+dig_print "$1" "lb-01"
+dig_print "$1" "web-01"
+dig_print "$1" "web-02"
+
