@@ -2,4 +2,10 @@
 # Nginx container must listen to port 80
 apt-get update
 apt-get -y install nginx
+run_at_port=$(lsof -i :80 | \
+sed -n '2{s/^[[:space:]]*\([^[:space:]]*\).*/\1/p}')
+if [ -n "$run_at_port" ]
+then
+	pkill "$run_at_port"
+fi
 sudo service nginx restart
