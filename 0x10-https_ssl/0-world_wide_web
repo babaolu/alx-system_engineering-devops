@@ -7,14 +7,14 @@ then
 fi
 
 dig_print () {
-	d_ip=$(dig "$2"."$1" | grep "$2"."$1" | \
-	grep -oE '\b[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+\b')
+	d_ip=$(dig +short "$2"."$1" | awk 'BEGIN{RS="[^0-9.]"} \
+	{if ($0 ~ /^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$/) print $0}')
+	
 	echo "The subdomain $2 is a A record and points to $d_ip"
 }
 
 if [ "$#" -ge 2 ]
 then
-	echo "$#"
 	dig_print "$1" "$2"
 	exit
 fi
