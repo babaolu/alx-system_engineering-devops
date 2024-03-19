@@ -3,7 +3,7 @@
 
 sudo apt update
 sudo apt -y upgrade
-sudo apt -y install ufw
+sudo apt -y install net-tools ufw
 
 sudo ufw --force enable
 sudo ufw --force default reject incoming
