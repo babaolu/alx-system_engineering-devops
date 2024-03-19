@@ -1,0 +1,13 @@
+#!/usr/bin/bash
+# Setting up ufw
+
+sudo apt update
+sudo apt -y upgrade
+sudo apt -y install ufw
+
+sudo ufw --force enable
+sudo ufw --force default reject incoming
+sudo ufw allow in 22/tcp
+sudo ufw allow in 443/tcp
+sudo ufw allow in 80/tcp
+sudo ufw --force reload
