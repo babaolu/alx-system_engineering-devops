@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+# changing the user to the one provided
+
+if [ -z "$1" ]
+then
+	whoami
+	exit
+fi
+apt update > /dev/null 2>&1 && apt install -y sudo > /dev/null 2>&1
+sudo apt update > /dev/null 2>&1 && sudo apt -y upgrade > /dev/null 2>&1
+
+sudo -u "$1" whoami
