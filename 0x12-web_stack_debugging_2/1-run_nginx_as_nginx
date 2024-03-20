@@ -7,4 +7,4 @@ sudo sed -i 's/[[:space:]listen[[:space:]]\+80;$/\tlisten\t 8080;/' \
 /etc/nginx/conf.d/default.conf
 sudo chown -R nginx:nginx /etc/nginx/
 sudo usermod -aG root nginx
-servive nginx restart
+sudo -u nginx servive nginx restart
