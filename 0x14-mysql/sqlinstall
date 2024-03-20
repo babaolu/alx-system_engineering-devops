@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+# Install and setup mysql
+sudo apt update
+sudo apt -y upgrade
+wget https://repo.mysql.com//mysql-apt-config_0.8.29-1_all.deb
+sudo dpkg -i mysql-apt-config_0.8.29-1_all.deb
+sudo apt update
+sudo apt install mysql-server
+sudo service mysql status
