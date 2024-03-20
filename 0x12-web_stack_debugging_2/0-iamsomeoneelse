@@ -1,5 +1,5 @@
-#!/usr/bin/bash
-# changing the user to the one provided
+#!/usr/bin/env bash
+# Changing the user to the one provided
 
 if [ -z "$1" ]
 then
