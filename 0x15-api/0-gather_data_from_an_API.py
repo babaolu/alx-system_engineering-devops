@@ -18,4 +18,4 @@ if __name__ == "__main__":
     com = len(completed)
     print("Employee {} is done with tasks({}/{}):".format(emp, com, total))
     for task in completed:
-        print("\t{}".format(task.get("title")))
+        print("\t {}".format(task.get("title")))
