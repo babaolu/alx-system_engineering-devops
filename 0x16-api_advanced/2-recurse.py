@@ -7,6 +7,8 @@ import requests
 
 def recurse(subreddit, hot_list=[]):
     """ Prints title of first 10 hot posts for subreddit """
+    if not isinstance(subreddit, str):
+        return hot_list
     url = 'https://www.reddit.com/r/'
     t_list = []
     try:

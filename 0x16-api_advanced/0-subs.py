@@ -5,6 +5,8 @@ import requests
 
 def number_of_subscribers(subreddit):
     """ Returns number of subscribers for subreddit """
+    if not isinstance(subreddit, str):
+        return 0
     try:
         r = requests.get('https://www.reddit.com/r/' + subreddit +
                          '/about.json',

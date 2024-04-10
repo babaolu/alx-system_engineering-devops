@@ -7,6 +7,8 @@ import requests
 
 def top_ten(subreddit):
     """ Prints title of first 10 hot posts for subreddit """
+    if not isinstance(subreddit, str):
+        print(None)
     t_list = []
     try:
         r = requests.get('https://www.reddit.com/r/' + subreddit +
