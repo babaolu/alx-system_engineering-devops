@@ -18,7 +18,7 @@ def top_ten(subreddit):
         r.raise_for_status()
         t_list = r.json().get('data').get('children')
     except requests.exceptions.RequestException as e:
-        pass
+        print(None)
     if t_list:
         [print(i.get('data').get('title')) for i in t_list
          if not i.get('data').get('stickied')]
