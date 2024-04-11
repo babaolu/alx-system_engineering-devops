@@ -23,7 +23,8 @@ def top_ten(subreddit):
     except requests.exceptions.RequestException as e:
         print(None)
     if t_list:
-        [print(i.get('data').get('title')) for i in t_list
-         if not i.get('data').get('stickied')]
+        for i in t_list:
+            if not i.get('data').get('stickied'):
+                print(i.get('data').get('title'))
     else:
         print(None)
