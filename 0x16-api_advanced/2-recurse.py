@@ -24,7 +24,7 @@ def recurse(subreddit, hot_list=[], after=None):
         t_list = r.json().get('data').get('children')
         after = r.json().get('data').get('after')
     except requests.exceptions.RequestException as e:
-        pass
+        return None
 
     if t_list:
         hot_list.extend([i.get('data').get('title') for i in t_list
