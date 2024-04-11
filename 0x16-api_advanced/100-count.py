@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 """
-Implements function for printing first 10 hot posts for a given subreddit
+Implements function listing ordered keyword counts
 """
 import requests
 
 
 def count_words(subreddit, word_list, after=None, hot_count={}):
-    """ Prints title of first 10 hot posts for subreddit """
+    """ Prints ordered keyword count """
     if not isinstance(subreddit, str):
         return hot_list
     url = 'https://www.reddit.com/r/'
@@ -33,9 +33,11 @@ def count_words(subreddit, word_list, after=None, hot_count={}):
                   if not i.get('data').get('stickied')]
         for title in t_list:
             for word in word_list:
-                if word in title:
+                if word.lower() in title.lower():
                     hot_count[word] = hot_count[word] + 1
         count_words(subreddit, word_list, after, hot_count)
     else:
+        hot_count = dict(sorted(hot_count.items()))
         for word, count in hot_count.items():
-            print('{}: {}'.format(word, count))
+            if count:
+                print('{}: {}'.format(word, count))
