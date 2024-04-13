@@ -1,0 +1,2 @@
+sudo systemctl start datadog-agent
+sudo systemctl stop datadog-agent
