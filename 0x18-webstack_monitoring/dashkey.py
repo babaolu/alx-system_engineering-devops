@@ -2,8 +2,8 @@
 import requests
 
 # Set up your Datadog API credentials
-api_key = '558be1bca5a6471ec9f5ce4c4aa8845c'
-app_key = '28c3c86bebf85fdcaae42808d31efce4f847867e'
+api_key = sys.argv[1]
+app_key = sys.argv[2]
 
 # Define the URL for the Dashboards API endpoint
 url = 'https://api.datadoghq.com/api/v1/dashboard'
