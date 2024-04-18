@@ -1,0 +1,11 @@
+[Unit]
+Descriptions=Guniorn processes
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/ubuntu/.local/bin/gunicorn --bind 0.0.0.0:5003 -w 3 web_dynamic.2-hbnb:app \
+          >> /tmp/airbnb-access.log 2>> /tmp/airbnb-error.log
+
+[Install]
+WantedBy=multi-user.target
