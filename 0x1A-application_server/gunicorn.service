@@ -4,7 +4,10 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/home/ubuntu/.local/bin/gunicorn --bind 0.0.0.0:5003 -w 3 web_dynamic.2-hbnb:app \
+ExecStart=HBNB_MYSQL_USER=hbnb_dev HBNB_MYSQL_PWD=hbnb_dev_pwd \
+          HBNB_MYSQL_HOST=localhost HBNB_MYSQL_DB=hbnb_dev_db \
+          HBNB_TYPE_STORAGE=db /home/ubuntu/.local/bin/gunicorn --bind \
+          0.0.0.0:5003 -w 3 web_dynamic.2-hbnb:app \
           >> /tmp/airbnb-access.log 2>> /tmp/airbnb-error.log
 
 [Install]
